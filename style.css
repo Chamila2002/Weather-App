@@ -8,7 +8,7 @@ body{
   background-color: #222;
 }
 .card{
-  width: 35%;
+  width: 30%;
   max-width: 470%;
   background: linear-gradient(135deg,#00feba,#5b548a);
   color: #fff;
@@ -44,7 +44,40 @@ body{
   height: 60px;
   cursor: pointer;
 }
-
 .search button img {
   width: 16px;
 }
+.weather-icon{
+  width:170px;
+  margin-top:30px;
+}
+.weather h1 {
+  font-size: 70px;
+  font-weight: 500;
+}
+.weather h2 {
+  font-size: 40px;
+  font-weight: 400;
+  margin-top: -10px;
+}
+.details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  margin-top: 50px;
+}
+.col {
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+.col img {
+  width: 40px;
+  margin-right: 10px;
+}
+.humidity, .wind {
+  font-size: 28px;
+  margin-top: -6px;
+}
+
