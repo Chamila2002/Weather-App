@@ -49,29 +49,38 @@ function updateWeather(data) {
   const main = data.weather[0].main;
   weatherIcon.src = "images/" + (iconMap[main] || "default.png");
   weatherIcon.alt = main;
+
+  // Animate weather section
   weatherDiv.style.display = "block";
   weatherDiv.style.opacity = 1;
   errorDiv.style.display = "none";
+  animateElement(weatherDiv, "animate"); // Fade in weather info
+  animateElement(weatherIcon, "animate"); // Bounce weather icon
 }
 
 function showError(message) {
   errorDiv.querySelector("p").textContent = message;
   errorDiv.style.display = "block";
   weatherDiv.style.display = "none";
+  animateElement(errorDiv, "animate"); // Shake error
 }
 
 function showLoader(show) {
   loader.style.display = show ? "block" : "none";
 }
 
-searchForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  checkWeather(searchBox.value);
-});
+// Utility: Add animation class and remove it after animation ends
+function animateElement(element, animationClass) {
+  element.classList.remove(animationClass); // Remove if present
+  void element.offsetWidth; // Force reflow
+  element.classList.add(animationClass);
+  element.addEventListener("animationend", function handler() {
+    element.classList.remove(animationClass);
+    element.removeEventListener("animationend", handler);
+  });
+}
 
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
   checkWeather(searchBox.value);
 });
-
-

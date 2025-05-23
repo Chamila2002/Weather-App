@@ -21,6 +21,11 @@ body {
   box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
   backdrop-filter: blur(4px);
   transition: box-shadow 0.3s;
+  animation: fadeInCard 1s ease;
+}
+@keyframes fadeInCard {
+  from { opacity: 0; transform: translateY(40px);}
+  to   { opacity: 1; transform: translateY(0);}
 }
 .card:hover {
   box-shadow: 0 16px 48px 0 rgba(31,38,135,0.37);
@@ -42,6 +47,10 @@ body {
   flex: 1;
   margin-right: 16px;
   font-size: 18px;
+  transition: box-shadow 0.3s;
+}
+.search input:focus {
+  box-shadow: 0 0 8px 2px #3498db55;
 }
 .search button {
   border: 0;
@@ -54,6 +63,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.2s;
+}
+.search button:hover {
+  transform: scale(1.1);
 }
 .search button img {
   width: 16px;
@@ -76,6 +89,25 @@ body {
   width: 170px;
   margin-top: 30px;
 }
+.weather-icon.animate {
+  animation: bounceIn 0.8s cubic-bezier(.68,-0.55,.27,1.55);
+}
+@keyframes bounceIn {
+  0%   { transform: scale(0.5) translateY(-100px); opacity: 0; }
+  60%  { transform: scale(1.1) translateY(10px); opacity: 1; }
+  80%  { transform: scale(0.95) translateY(-5px);}
+  100% { transform: scale(1) translateY(0);}
+}
+.weather {
+  transition: opacity 0.3s;
+}
+.weather.animate {
+  animation: fadeInWeather 0.7s;
+}
+@keyframes fadeInWeather {
+  from { opacity: 0; transform: translateY(30px);}
+  to   { opacity: 1; transform: translateY(0);}
+}
 .weather h1 {
   font-size: 70px;
   font-weight: 500;
@@ -92,6 +124,11 @@ body {
   justify-content: space-between;
   padding: 0 20px;
   margin-top: 50px;
+  animation: slideUp 0.8s 0.2s cubic-bezier(.23,1.01,.32,1) backwards;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px);}
+  to   { opacity: 1; transform: translateY(0);}
 }
 .col {
   display: flex;
@@ -106,9 +143,6 @@ body {
   font-size: 28px;
   margin-top: -6px;
 }
-.weather, .error {
-  transition: opacity 0.3s;
-}
 .error {
   text-align: left;
   margin-left: 10px;
@@ -119,6 +153,15 @@ body {
   background: rgba(255,255,255,0.08);
   padding: 8px 12px;
   border-radius: 8px;
+  transition: opacity 0.3s;
+}
+.error.animate {
+  animation: shake 0.4s;
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0);}
+  20%, 60% { transform: translateX(-10px);}
+  40%, 80% { transform: translateX(10px);}
 }
 @media (max-width: 600px) {
   .search {
